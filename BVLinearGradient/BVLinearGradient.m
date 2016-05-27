@@ -18,9 +18,16 @@
 - (void)setColors:(NSArray *)colorStrings
 {
   NSMutableArray *colors = [NSMutableArray arrayWithCapacity:colorStrings.count];
+    if(colorStrings.count > 1){
   for (NSString *colorString in colorStrings) {
     [colors addObject:(id)[RCTConvert UIColor:colorString].CGColor];
   }
+    }
+    else{
+  [colors addObject:[UIColor colorWithWhite:0 alpha: 0].CGColor];
+  [colors addObject:[UIColor colorWithWhite:0 alpha: 100].CGColor];
+    }
+  
   self.gradientLayer.colors = colors;
 }
 
